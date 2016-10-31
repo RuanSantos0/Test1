@@ -9,12 +9,12 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('adicinarDonoCtrl', ['$scope', '$stateParams' , 'PetClinic', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('DonoCtrl', ['$scope', '$stateParams' , 'DonoService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
 
-function ($scope, $stateParams, adicinarDono, $ionicPopup) {
+function ($scope, $stateParams, DonoService, $ionicPopup) {
 
   $scope.data = {
          nome: '',
@@ -28,7 +28,7 @@ function ($scope, $stateParams, adicinarDono, $ionicPopup) {
 
      $scope.submit = function(){
          $scope.submitting = true;
-         adicinarDono.add($scope.data).then(function(){
+         DonoService.add($scope.data).then(function(){
              $scope.data = {
                nome: '',
                sobrenome: '',
@@ -48,10 +48,10 @@ function ($scope, $stateParams, adicinarDono, $ionicPopup) {
 
 }])
 
-.controller('adicionarPetCtrl', ['$scope', '$stateParams', 'PetClinic', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('PetCtrl', ['$scope', '$stateParams', 'PetService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, adicionarPet, $ionicPopup) {
+function ($scope, $stateParams, PetService, $ionicPopup) {
 
 
     $scope.data = {
@@ -65,7 +65,7 @@ function ($scope, $stateParams, adicionarPet, $ionicPopup) {
 
        $scope.submit = function(){
            $scope.submitting = true;
-           adicionarPet.add($scope.data).then(function(){
+           PetService.add($scope.data).then(function(){
                $scope.data = {
                  nomePet: '',
                  dataNascimento: '',
