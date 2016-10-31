@@ -17,15 +17,15 @@ angular.module('app.routes', [])
   })
 
   .state('adicinarDono', {
-    url: '/adicionarPet',
+    url: '/adicionarDono',
     templateUrl: 'templates/adicinarDono.html',
-    controller: 'adicinarDonoCtrl'
+    controller: 'DonoCtrl'
   })
 
   .state('adicionarPet', {
     url: '/adicionarPet',
     templateUrl: 'templates/adicionarPet.html',
-    controller: 'adicionarPetCtrl'
+    controller: 'PetCtrl'
   })
 
   .state('alterarPet', {
