@@ -3,7 +3,9 @@ angular.module('app.services', [])
 
 .service('PetClinic',['$http', function($http){
 
-  var api_url = 'https://sheetsu.com/apis/v1.0/788a7ed5d19c';
+  console.log('test');
+
+  var api_url = 'https://sheetsu.com/apis/v1.0/dda5363a413a';
   var currentID = 1;
 
   var ret = {
