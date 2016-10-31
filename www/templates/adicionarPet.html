@@ -3,17 +3,17 @@
     <form id="adicionarPet-form7" class="list">
       <div class="spacer" style="width: 285.833px; height: 90px;"></div>
       <label class="item item-input" id="adicionarPet-input12">
-        <input placeholder="Nome" type="text">
+        <input placeholder="Nome" type="text" ng-model=data.nomePet>
       </label>
       <div class="spacer" style="height: 9px;"></div>
       <label class="item item-input" id="adicionarPet-input13">
-        <input placeholder="Data de Nascimento" type="text">
+        <input placeholder="Data de Nascimento" type="text" ng-model=data.dataNascimento>
       </label>
       <div class="spacer" style="height: 9px;"></div>
       <label class="item item-input" id="adicionarPet-input14">
-        <input placeholder="Raça" type="text">
+        <input placeholder="Raça" type="text" ng-model=data.raca>
       </label>
     </form>
-    <button id="adicionarPet-button16" class="button button-positive  button-block">Salvar</button>
+    <button id="adicionarPet-button16" class="button button-positive  button-block" ng-click="submit()"  ng-disabled="submitting">Salvar</button>
   </ion-content>
 </ion-view>
