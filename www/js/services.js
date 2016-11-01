@@ -62,4 +62,36 @@ angular.module('app.services', [])
 
     return ret2;
 
+
+}])
+
+.service('VisitaService',['$http', function($http){
+
+  var api_url3 = 'https://sheetsu.com/apis/v1.0/d438a87351c8';
+  var currentID = 1;
+
+  var ret3 = {
+        all: function(){
+
+            return $http.get(api_url3).then(function(resp){
+                if (resp.data.length > 0) currentID = parseInt(resp.data[resp.data.length-1].id);
+                return resp.data;
+            });
+
+        },
+        add: function(data){
+            currentID++;
+            data.id = currentID;
+
+            return $http.post(api_url3, data).then(function(resp){
+                return resp.data;
+            });
+
+        }
+    }
+
+     ret3.all();
+
+     return ret3;
+
 }]);

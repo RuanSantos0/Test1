@@ -3,13 +3,13 @@
     <div class="spacer" style="height: 90px;"></div>
     <form id="adicionarVisita-form11" class="list">
       <label class="item item-input" id="adicionarVisita-input18">
-        <input placeholder="Data" type="text">
+        <input placeholder="Data" type="text" ng-model=data.dataVisita>
       </label>
       <div class="spacer" style="height: 9px;"></div>
       <label class="item item-input" id="adicionarVisita-input19">
-        <input placeholder="Descrição" type="text">
+        <input placeholder="Descrição" type="text" ng-model=data.descricao>
       </label>
     </form>
-    <button id="adicionarVisita-button17" class="button button-positive  button-block">Salvar</button>
+    <button id="adicionarVisita-button17" class="button button-balanced  button-block" ng-click="submit()"  ng-disabled="submitting">Salvar</button>
   </ion-content>
 </ion-view>

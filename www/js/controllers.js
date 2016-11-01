@@ -99,10 +99,33 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('adicionarVisitaCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('adicionarVisitaCtrl', ['$scope', '$stateParams', 'VisitaService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, VisitaService, $ionicPopup) {
 
 
+  $scope.data = {
+         dataVisita: '',
+         descricao:''
+     }
+
+     $scope.submitting = false;
+
+     $scope.submit = function(){
+         $scope.submitting = true;
+         VisitaService.add($scope.data).then(function(){
+             $scope.data = {
+               dataVisita: '',
+               descricao:''
+             }
+             $scope.submitting = false;
+
+             $ionicPopup.alert({
+                 title: 'Thank you!',
+                 template: 'Your response has been recorded.'
+             });
+
+         })
+     }
 }])
