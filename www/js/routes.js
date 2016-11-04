@@ -7,8 +7,8 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
+
+
 
       .state('petClinic', {
     url: '/petclinc',
@@ -31,7 +31,7 @@ angular.module('app.routes', [])
   .state('alterarPet', {
     url: '/alterarPet',
     templateUrl: 'templates/alterarPet.html',
-    controller: 'alterarPetCtrl'
+    controller: 'PetCtrl'
   })
 
   .state('editeOPet', {
@@ -48,6 +48,6 @@ angular.module('app.routes', [])
 
 $urlRouterProvider.otherwise('/petclinc')
 
-  
+
 
 });

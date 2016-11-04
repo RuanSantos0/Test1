@@ -23,6 +23,9 @@ angular.module('app.services', [])
                 return resp.data;
             });
 
+        },
+        delete: function(id){
+          return $http.delete(api_url+'/id/'+id);
         }
     }
 
@@ -39,6 +42,7 @@ angular.module('app.services', [])
     var currentID = 1;
 
     var ret2 = {
+      //Esse metodos aqui ALL  é que vai trazer todos os registros já cadastrados
        all: function(){
 
            return $http.get(api_url2).then(function(resp){

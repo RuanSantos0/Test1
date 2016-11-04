@@ -51,6 +51,9 @@ function ($scope, $stateParams, DonoService, $ionicPopup) {
 .controller('PetCtrl', ['$scope', '$stateParams', 'PetService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
+//O controller é único por Classe. Se existe uma classe Pet, o seu controller deve ser o PetController
+//Você vai trazer os metodos de consulta de dados pra cá!
+// to achando o codigo estranho desse controller, de onde tu tirou ?
 function ($scope, $stateParams, PetService, $ionicPopup) {
 
 
@@ -81,14 +84,39 @@ function ($scope, $stateParams, PetService, $ionicPopup) {
 
            })
        }
+
+
+       $scope.PetService= [];
+
+       $scope.loadData = function(){
+
+         PetService.all().then(function(res){
+           $scope.pets = res;
+         })
+       }
+       $scope.loadData();
 }])
 
 .controller('alterarPetCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
+//Primeiro Erro: no controller de Pet vc tá chmando DonoService.
+//Segundo erro, nome do controller. O controller já existe e deve ser o PetController, que deve existir aqui... vou procurar...
+console.log(PetService.all);
 
 
+
+  $scope.showDelete = false;
+  $scope.taggleDelete = function(){
+    $scope.showDelete = !$scope.showDelete;
+
+  }
+  $scope.deleteItem = function($index){
+      PetService.delete($scope.PetService[$index].id).then(function(){
+        $scope.PetService.splice($index-1,1);
+      })
+  }
 }])
 
 .controller('editeOPetCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
