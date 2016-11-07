@@ -10,8 +10,15 @@
         <input placeholder="Data de Nascimento" type="text" ng-model=data.dataNascimento>
       </label>
       <div class="spacer" style="height: 9px;"></div>
-      <label class="item item-input" id="adicionarPet-input14">
-        <input placeholder="Raça" type="text" ng-model=data.raca>
+      <label class="item item-select" id="adicionarPet-select1">
+        <span class="input-label">Raça</span>
+        <select ng-model="data.raca">
+          <option ng-repeat="raca in racas" value="{{raca.id}}">{{raca.Nome}}</option>
+        </select>
+        <!--
+        <select ng-model="data.raca" ng-options="raca.Nome for raca in racas track by raca.id">
+        </select>
+        -->
       </label>
     </form>
     <button id="adicionarPet-button16" class="button button-balanced  button-block" ng-click="submit()"  ng-disabled="submitting">Salvar</button>

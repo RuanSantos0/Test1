@@ -98,4 +98,27 @@ angular.module('app.services', [])
 
      return ret3;
 
+}])
+
+.service('RacaService',['$http', function($http){
+
+  var api_url = 'https://sheetsu.com/apis/v1.0/9eddcb0ee30f';
+  var currentID = 1;
+
+  var ret = {
+        pegaRacas: function(){
+
+            return $http.get(api_url).then(function(resp){
+                if (resp.data.length > 0) currentID = parseInt(resp.data[resp.data.length-1].id);
+                return resp.data;
+            });
+
+        }
+       
+  }
+
+  ret.pegaRacas();
+
+  return ret;
+
 }]);
