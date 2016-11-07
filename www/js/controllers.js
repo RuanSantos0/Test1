@@ -98,12 +98,12 @@ function ($scope, $stateParams, PetService, RacaService, $ionicPopup) {
 
 
        $scope.racas = [];
-       
+
        $scope.lerRacas = function(){
 
          RacaService.pegaRacas().then(function(res){
            $scope.racas = res;
-           
+
          })
        }
        $scope.lerRacas();
