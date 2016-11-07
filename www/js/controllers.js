@@ -108,6 +108,17 @@ function ($scope, $stateParams, PetService, RacaService, $ionicPopup) {
        }
        $scope.lerRacas();
 
+       $scope.showDelete = false;
+       $scope.taggleDelete = function(){
+         $scope.showDelete = !$scope.showDelete;
+
+       }
+       $scope.deleteItem = function($index){
+           PetService.delete($scope.PetService[$index].id).then(function(){
+             $scope.PetService.splice($index-1,1);
+           })
+       }
+
 }])
 
 .controller('alterarPetCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -120,16 +131,6 @@ console.log(PetService.all);
 
 
 
-  $scope.showDelete = false;
-  $scope.taggleDelete = function(){
-    $scope.showDelete = !$scope.showDelete;
-
-  }
-  $scope.deleteItem = function($index){
-      PetService.delete($scope.PetService[$index].id).then(function(){
-        $scope.PetService.splice($index-1,1);
-      })
-  }
 }])
 
 .controller('editeOPetCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller

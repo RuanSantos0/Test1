@@ -1,7 +1,10 @@
 <ion-view title="Alterar Pet" id="page1" style="">
+  <ion-nav-buttons side="left" class="has-header">
+    <button class="button button-icon icon ion-ios-minus-outline" ng-click="toggleDelete()"></button>
+  </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
     <ion-list id="alterarPet-list1" >
-      <ion-item class="item-avatar" id="alterarPet-list-item1" style="" ng-repeat="pet in pets">
+      <ion-item class="item-avatar" id="alterarPet-list-item1" style="" ng-repeat="pet in pets" ng-click="submitting  ">
         <h2>{{pet.nomePet}}</h2>
         <h2>{{pet.dataNascimento}}</h2>
         <h2>{{pet.raca}}</h2> <!-- adicinarDono????????????????? Dono não é pet! Não iria funcionar nunca! E kd as diretivas? Não tem ng-repeat aqui! -->
