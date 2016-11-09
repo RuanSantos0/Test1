@@ -25,19 +25,19 @@ angular.module('app.routes', [])
   .state('adicionarPet', {
     url: '/adicionarPet',
     templateUrl: 'templates/adicionarPet.html',
-    controller: 'PetCtrl'
+    controller: 'AdicionarPetCtrl'
   })
 
   .state('alterarPet', {
     url: '/alterarPet',
     templateUrl: 'templates/alterarPet.html',
-    controller: 'PetCtrl'
+    controller: 'AlterarPetCtrl'
   })
 
   .state('editeOPet', {
-    url: '/page8',
+    url:'/editeOPet/:id/',
     templateUrl: 'templates/editeOPet.html',
-    controller: 'editeOPetCtrl'
+    controller: 'EditeOPetCtrl'
   })
 
   .state('adicionarVisita', {

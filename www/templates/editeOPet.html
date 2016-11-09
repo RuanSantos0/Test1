@@ -2,19 +2,22 @@
   <ion-content padding="true" class="has-header">
     <form id="editeOPet-form10" class="list">
       <div class="spacer" style="height: 90px;"></div>
+
       <label class="item item-input" id="editeOPet-input15">
-        <input placeholder="Nome" type="text">
+        <input placeholder={{EditPet.nomePet}} type="text" ng-model=EditPet.nomePet>
       </label>
       <div class="spacer" style="height: 9px;"></div>
       <label class="item item-input" id="editeOPet-input16">
-        <input placeholder="Data de Nascimento" type="text">
+        <input placeholder={{EditPet.dataNascimento}} type="text" ng-model=EditPet.dataNascimento>
       </label>
       <div class="spacer" style="height: 9px;"></div>
-      <label class="item item-input" id="editeOPet-input17">
-        <input placeholder="Raça" type="text">
+      <label class="item item-select" id="adicionarPet-select1">
+        <span class="input-label">Raça</span>
+        <select ng-model="EditPet.raca_id" data-ng-options="raca.id as raca.Nome for raca in racas">   
+        </select>
       </label>
     </form>
     <div class="spacer" style="height: 9px;"></div>
-    <button id="editeOPet-button15" class="button button-balanced  button-block">Salvar</button>
+    <button id="editeOPet-button15" class="button button-balanced  button-block" ng-click="atualizar()" ng-disabled="atualizando">Salvar</button>
   </ion-content>
 </ion-view>
