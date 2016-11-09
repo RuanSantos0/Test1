@@ -137,7 +137,7 @@ angular.module('app.services', [])
 
 .service('RacaServiceLocal', function(){
 
-
+    //Lista de Racas que é carregada ao iniciar a aplicação
     racasList = [
               { id: 1, Nome: 'Raça1'},
               { id: 2, Nome: 'Raça2'},
@@ -159,7 +159,7 @@ angular.module('app.services', [])
 
 .service('PetServiceLocal',['$q',function($q){
 
-
+  //Lista de Pets que é carregada ao iniciar a aplicação
    petsList = [
               { id: 1, nomePet: 'Peter', dataNascimento: '01/01/2001', raca_id:1 },
               { id: 2, nomePet: 'Lois', dataNascimento: '02/02/2002', raca_id:2 },
@@ -168,7 +168,35 @@ angular.module('app.services', [])
               { id: 5, nomePet: 'Stewie', dataNascimento: '05/05/2005', raca_id:5 }
    ];
 
+   //retorna o ultimo id cadastrado
+   function getLastID () {
+        var temp = petsList;
+
+        temp.sort(function (a, b) {
+          if (a.id > b.id) {
+            return 1;
+          }
+          if (a.id < b.id) {
+            return -1;
+          }
+          
+        });
+
+        return temp[temp.length -1].id
+   }
+
    return {
+
+        //adiciona um Pet
+        addPet: function (pet) {
+          //verifica qual é o ultimo ID e incrementa
+          var newID = getLastID() +1;
+          pet.id = newID;
+          //salva o pet na PetList
+          petsList.push(pet);
+
+        },
+
         //Retorna a lista de Pets
         getPets: function() {
             return petsList;

@@ -48,19 +48,19 @@ function ($scope, $stateParams, DonoService, $ionicPopup) {
 
 }])
 
-.controller('AdicionarPetCtrl', ['$scope', '$stateParams', 'PetService', 'RacaServiceLocal','$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('AdicionarPetCtrl', ['$scope', '$stateParams', 'PetServiceLocal', 'RacaServiceLocal','$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 //O controller é único por Classe. Se existe uma classe Pet, o seu controller deve ser o PetController
 //Você vai trazer os metodos de consulta de dados pra cá!
 // to achando o codigo estranho desse controller, de onde tu tirou ?
-function ($scope, $stateParams, PetService, RacaServiceLocal,  $ionicPopup ) {
+function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal,  $ionicPopup ) {
 
 
     $scope.data = {
            nomePet: '',
            dataNascimento: '',
-           raca: ''
+           raca_id: ''
 
        }
 
@@ -68,13 +68,23 @@ function ($scope, $stateParams, PetService, RacaServiceLocal,  $ionicPopup ) {
 
     $scope.submit = function(){
            $scope.submitting = true;
-           PetService.add($scope.data).then(function(){
-               $scope.data = {
+
+           PetServiceLocal.addPet($scope.data);
+
+            $scope.data = {
                  nomePet: '',
                  dataNascimento: '',
-                 raca: ''
+                 raca_id: ''
 
                }
+
+           // PetService.add($scope.data).then(function(){
+           //     $scope.data = {
+           //       nomePet: '',
+           //       dataNascimento: '',
+           //       raca: ''
+
+           //     }
                $scope.submitting = false;
 
                $ionicPopup.alert({
@@ -82,7 +92,7 @@ function ($scope, $stateParams, PetService, RacaServiceLocal,  $ionicPopup ) {
                    template: 'Your response has been recorded.'
                });
 
-           })
+           //})
     }
     
     $scope.racas = [];
