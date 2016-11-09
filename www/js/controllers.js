@@ -108,6 +108,7 @@ function ($scope, $stateParams, PetServiceLocal) {
 
         $scope.pets = PetServiceLocal.getPets();
 
+
          // PetService.all().then(function(res){
          //    $scope.pets = res;
          //  })
@@ -115,6 +116,31 @@ function ($scope, $stateParams, PetServiceLocal) {
 
     $scope.loadData();
 
+
+       // $scope.racas = [];
+
+       // $scope.lerRacas = function(){
+
+       //   RacaService.pegaRacas().then(function(res){
+       //     $scope.racas = res;
+
+       //   })
+       // }
+       // $scope.lerRacas();
+
+
+       // $scope.showDelete = false;
+       
+       // $scope.taggleDelete = function(){
+       //    $scope.showDelete = !$scope.showDelete;
+
+       // }
+       
+       // $scope.deleteItem = function($index){
+       //     PetService.delete($scope.PetService[$index].id).then(function(){
+       //       $scope.PetService.splice($index-1,1);
+       //     })
+       // }
 
 }])
 
@@ -131,6 +157,7 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal, $ionicPopup) {
     $scope.lerPet();
        
     $scope.lerRacas = function(){
+
 
         $scope.racas = RacaServiceLocal.getRacas();  
     }
@@ -155,6 +182,7 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal, $ionicPopup) {
     }
 
 }])
+
 
 .controller('adicionarVisitaCtrl', ['$scope', '$stateParams', 'VisitaService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
