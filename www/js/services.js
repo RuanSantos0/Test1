@@ -139,11 +139,11 @@ angular.module('app.services', [])
 
     //Lista de Racas que é carregada ao iniciar a aplicação
     racasList = [
-              { id: 1, Nome: 'Raça1'},
-              { id: 2, Nome: 'Raça2'},
-              { id: 3, Nome: 'Raça3'},
-              { id: 4, Nome: 'Raça4'},
-              { id: 5, Nome: 'Raça5'},
+              { id: 1, Nome: 'Dálmata'},
+              { id: 2, Nome: 'Shih-tzu'},
+              { id: 3, Nome: 'Pastor-Belga'},
+              { id: 4, Nome: 'Buldogue'},
+              { id: 5, Nome: 'Pit Bull'},
     ];
 
 
