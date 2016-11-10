@@ -158,7 +158,7 @@ angular.module('app.services', [])
 
 .service('visualizarPetsVisitaLocal',['$q',function($q){
 
-  petsList2 = [
+  petsList = [
              { id: 1, nomePet: 'Peter', dataNascimento: '01/01/2001', raca_id:1 },
              { id: 2, nomePet: 'Lois', dataNascimento: '02/02/2002', raca_id:2 },
              { id: 3, nomePet: 'Meg', dataNascimento: '03/03/2003', raca_id:3 },
@@ -168,7 +168,7 @@ angular.module('app.services', [])
 
   //retorna o ultimo id cadastrado
   function getLastID () {
-       var temp = petsList2;
+       var temp = petsList;
 
        temp.sort(function (a, b) {
          if (a.id > b.id) {
@@ -186,36 +186,36 @@ angular.module('app.services', [])
   return {
 
        //adiciona um Pet
-       addPet: function (pet2) {
+       addPet: function (pet) {
          //verifica qual é o ultimo ID e incrementa
          var newID = getLastID() +1;
-         pet2.id = newID;
+         pet.id = newID;
          //salva o pet na PetList
-         petsList2.push(pet2);
+         petsList.push(pet);
 
        },
 
        //Retorna a lista de Pets
        getPets: function() {
-           return petsList2;
+           return petsList;
        },
 
        //Retorna somente um Pet
        getPet: function (id) {
 
-           for (var i = 0; i < petsList2.length; i++) {
-               if (petsList2[i].id == id) {
-               return(petsList2[i]);
+           for (var i = 0; i < petsList.length; i++) {
+               if (petsList[i].id == id) {
+               return(petsList[i]);
                }
            }
            return '{}';
        },
 
        //Atualiza um pet
-       update: function(pet2){
+       update: function(pet){
          for(var i=0; i<petsList.length; i++){
-           if(petsList2[i].id == pet2.id){
-               petsList2[i] = pet2;
+           if(petsList[i].id == pet.id){
+               petsList[i] = pet;
 
            }
          }
