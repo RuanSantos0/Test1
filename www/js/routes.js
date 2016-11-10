@@ -49,7 +49,7 @@ angular.module('app.routes', [])
   .state('visualizarPetsVisita', {
     url:'/visualizarPetsVisita',
     templateUrl: 'templates/visualizarPetsVisita.html',
-    controller: 'PetCtrl'
+    controller: 'visualizarPetsVisita'
   })
 
 $urlRouterProvider.otherwise('/petclinc')

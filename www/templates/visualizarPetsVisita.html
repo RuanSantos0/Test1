@@ -1,12 +1,35 @@
-<ion-view title=" Pets Visita " id="page1" style="">
+<ion-view title=" Pets Visita " id="page9" style="">
   <ion-content padding="true" class="has-header">
-    <ion-list id="visualizarPetsVisita-list1" >
-      <ion-item class="item-avatar" id="visualizarPetsVisita-list-item1" style="" ng-repeat="pet in pets">
-        <h2>{{pet.nomePet}}</h2>
-        <h2>{{pet.dataNascimento}}</h2>
-        <h2>{{pet.raca}}</h2>
-      </ion-item>
-    </ion-list>
-    <button id="visualizarPetsVisita-button1" class="button button-balanced  button-block" ng-click="loadData()">Adicionar Visita</button>
-  </ion-content>
-</ion-view>
+    <table class="table pettable">
+      <tr>
+          <td><h3>Todos os Pets</h3></td>
+          <td></td>
+      </tr>
+      <tr ng-repeat="pet in pets">
+          <td>{{pet.nomePet}}</td>
+          <td>
+            <h2>  <a class="btn btn-primary ion-android-add-circle" ui-sref="adicionarVisita({id:pet.id})"></a> </h2>
+
+          </td>
+      </tr>
+  </table>
+
+
+      <!-- <ion-list id="alterarPet-list1" >
+        <ion-item class="item-avatar" id="alterarPet-list-item1" style="" ng-repeat="pet in pets" >
+          <h2>{{pet.nomePet}}
+
+            <a ui-sref="editeOPet" class="button icon-right ion-edit"></a>
+
+  =======
+      <ion-list id="alterarPet-list1" >
+        <ion-item class="item-avatar" id="alterarPet-list-item1" style="" ng-repeat="pet in pets" ng-click="submitting " ui-sref="editeOPet">
+          <h2>{{pet.nomePet}}</h2>
+          <h2>{{pet.dataNascimento}}</h2>
+          <h2>{{pet.raca}}</h2> <!-- adicinarDono????????????????? Dono não é pet! Não iria funcionar nunca! E kd as diretivas? Não tem ng-repeat aqui! -->
+
+        </ion-item>
+      </ion-list>
+
+    </ion-content>
+  </ion-view>

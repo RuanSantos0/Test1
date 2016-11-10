@@ -9,12 +9,12 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('DonoCtrl', ['$scope', '$stateParams' , 'DonoService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('DonoCtrl', ['$scope', '$stateParams' , 'DonoService', 'DonoServiceLocal', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
 
-function ($scope, $stateParams, DonoService, $ionicPopup) {
+function ($scope, $stateParams, DonoService, DonoServiceLocal, $ionicPopup) {
 
   $scope.data = {
          nome: '',
@@ -28,8 +28,10 @@ function ($scope, $stateParams, DonoService, $ionicPopup) {
 
      $scope.submit = function(){
          $scope.submitting = true;
-         DonoService.add($scope.data).then(function(){
-             $scope.data = {
+
+         DonoServiceLocal.addDono($scope.data);
+
+          $scope.data = {
                nome: '',
                sobrenome: '',
                endereco: '',
@@ -43,7 +45,7 @@ function ($scope, $stateParams, DonoService, $ionicPopup) {
                  template: 'Your response has been recorded.'
              });
 
-         })
+        // })
      }
 
 }])
@@ -94,14 +96,14 @@ function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal,  $ionicPopup 
 
            //})
     }
-    
+
     $scope.racas = [];
-       
+
     $scope.lerRacas = function(){
 
-        $scope.racas = RacaServiceLocal.getRacas();  
+        $scope.racas = RacaServiceLocal.getRacas();
     }
-    
+
     $scope.lerRacas();
 
 }])
@@ -112,8 +114,8 @@ function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal,  $ionicPopup 
 function ($scope, $stateParams, PetServiceLocal) {
 
     $scope.pets= [];
-    
-    
+
+
     $scope.loadData = function(){
 
         $scope.pets = PetServiceLocal.getPets();
@@ -140,12 +142,12 @@ function ($scope, $stateParams, PetServiceLocal) {
 
 
        // $scope.showDelete = false;
-       
+
        // $scope.taggleDelete = function(){
        //    $scope.showDelete = !$scope.showDelete;
 
        // }
-       
+
        // $scope.deleteItem = function($index){
        //     PetService.delete($scope.PetService[$index].id).then(function(){
        //       $scope.PetService.splice($index-1,1);
@@ -161,25 +163,25 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal, $ionicPopup) {
 
     $scope.lerPet = function(){
         $scope.EditPet = PetServiceLocal.getPet($stateParams.id);
-        
+
     };
 
     $scope.lerPet();
-       
+
     $scope.lerRacas = function(){
 
 
-        $scope.racas = RacaServiceLocal.getRacas();  
+        $scope.racas = RacaServiceLocal.getRacas();
     }
-    
+
     $scope.lerRacas();
 
 // atualizar os dados do pet
     $scope.atualizando = false;
 
     $scope.atualizar = function(){
-           
-           $scope.atualizando = true; 
+
+           $scope.atualizando = true;
            PetServiceLocal.update($scope.EditPet);
            $scope.atualizando = false;
 
@@ -188,7 +190,7 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal, $ionicPopup) {
                    template: 'Pet Atualizado com Sucesso!'
             });
 
-           
+
     }
 
 }])
@@ -223,4 +225,26 @@ function ($scope, $stateParams, VisitaService, $ionicPopup) {
 
          })
      }
+}])
+
+.controller('visualizarPetsVisita', ['$scope', '$stateParams', 'visualizarPetsVisitaLocal', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams,visualizarPetsVisitaLocal) {
+
+  $scope.pets= [];
+
+
+  $scope.loadData = function(){
+
+      $scope.pets = visualizarPetsVisitaLocal.getPets();
+
+
+       // PetService.all().then(function(res){
+       //    $scope.pets = res;
+       //  })
+  }
+
+  $scope.loadData();
+
 }])

@@ -145,18 +145,88 @@ angular.module('app.services', [])
               { id: 4, Nome: 'Raça4'},
               { id: 5, Nome: 'Raça5'},
     ];
-    
+
 
     return {
         getRacas: function() {
             return racasList;
         }
     };
-    
+
 
 })
 
+.service('visualizarPetsVisitaLocal',['$q',function($q){
 
+  petsList2 = [
+             { id: 1, nomePet: 'Peter', dataNascimento: '01/01/2001', raca_id:1 },
+             { id: 2, nomePet: 'Lois', dataNascimento: '02/02/2002', raca_id:2 },
+             { id: 3, nomePet: 'Meg', dataNascimento: '03/03/2003', raca_id:3 },
+             { id: 4, nomePet: 'Chris', dataNascimento: '04/04/2004', raca_id:4 },
+             { id: 5, nomePet: 'Stewie', dataNascimento: '05/05/2005', raca_id:5 }
+  ];
+
+  //retorna o ultimo id cadastrado
+  function getLastID () {
+       var temp = petsList2;
+
+       temp.sort(function (a, b) {
+         if (a.id > b.id) {
+           return 1;
+         }
+         if (a.id < b.id) {
+           return -1;
+         }
+
+       });
+
+       return temp[temp.length -1].id
+  }
+
+  return {
+
+       //adiciona um Pet
+       addPet: function (pet2) {
+         //verifica qual é o ultimo ID e incrementa
+         var newID = getLastID() +1;
+         pet2.id = newID;
+         //salva o pet na PetList
+         petsList2.push(pet2);
+
+       },
+
+       //Retorna a lista de Pets
+       getPets: function() {
+           return petsList2;
+       },
+
+       //Retorna somente um Pet
+       getPet: function (id) {
+
+           for (var i = 0; i < petsList2.length; i++) {
+               if (petsList2[i].id == id) {
+               return(petsList2[i]);
+               }
+           }
+           return '{}';
+       },
+
+       //Atualiza um pet
+       update: function(pet2){
+         for(var i=0; i<petsList.length; i++){
+           if(petsList2[i].id == pet2.id){
+               petsList2[i] = pet2;
+
+           }
+         }
+       }
+
+
+   };
+
+
+
+}])
 .service('PetServiceLocal',['$q',function($q){
 
   //Lista de Pets que é carregada ao iniciar a aplicação
@@ -179,7 +249,7 @@ angular.module('app.services', [])
           if (a.id < b.id) {
             return -1;
           }
-          
+
         });
 
         return temp[temp.length -1].id
@@ -204,7 +274,7 @@ angular.module('app.services', [])
 
         //Retorna somente um Pet
         getPet: function (id) {
-            
+
             for (var i = 0; i < petsList.length; i++) {
                 if (petsList[i].id == id) {
                 return(petsList[i]);
@@ -218,13 +288,85 @@ angular.module('app.services', [])
           for(var i=0; i<petsList.length; i++){
             if(petsList[i].id == pet.id){
                 petsList[i] = pet;
-                
+
             }
           }
         }
 
 
     };
-    
+
+
+}])
+
+.service('DonoServiceLocal',['$q',function($q){
+
+  //Lista de Pets que é carregada ao iniciar a aplicação
+   DonoList = [
+              { id: 1, nome: 'Peter',   sobrenome: 'Santos',    endereco: 'Rua do Castelo', cidade: 'Aracati',      telefone: '8888-8888'},
+              { id: 2, nome: 'Ruan',    sobrenome: 'Gondim',    endereco: 'Rua da Fabrica', cidade: 'Quixaba',      telefone: '5555-8888'},
+              { id: 3, nome: 'Cynthia', sobrenome: 'Pereira',   endereco: 'Rua do Corrego', cidade: 'Majorlandia',  telefone: '6666-8888' },
+              { id: 4, nome: 'Nunes',   sobrenome: 'Jesus',     endereco: 'Rua do Lixão',   cidade: 'Morada Nova',  telefone: '9999-8888'},
+              { id: 5, nome: 'Vinicius',sobrenome: 'Figueiredo',endereco: 'Rua da Escola',  cidade: 'Fortaleza',    telefone: '7777-8888'}
+   ];
+
+   //retorna o ultimo id cadastrado
+   function getLastID () {
+        var temp = DonoList;
+
+        temp.sort(function (a, b) {
+          if (a.id > b.id) {
+            return 1;
+          }
+          if (a.id < b.id) {
+            return -1;
+          }
+
+        });
+
+        return temp[temp.length -1].id
+   }
+
+   return {
+
+        //adiciona um Pet
+        addDono: function (dono) {
+          //verifica qual é o ultimo ID e incrementa
+          var newID = getLastID() +1;
+          dono.id = newID;
+          //salva o Dono na PetList
+          DonoList.push(dono);
+
+        },
+
+        //Retorna a lista de Pets
+        getDonos: function() {
+            return DonoList;
+        },
+
+        //Retorna somente um Pet
+        getDono: function (id) {
+
+            for (var i = 0; i < DonoList.length; i++) {
+                if (DonoList[i].id == id) {
+                return(DonoList[i]);
+                }
+            }
+            return '{}';
+        },
+
+        //Atualiza um pet
+        update: function(dono){
+          for(var i=0; i<DonoList.length; i++){
+            if(DonoList[i].id == dono.id){
+                DonoList[i] = dono;
+
+            }
+          }
+        }
+
+
+    };
+
 
 }]);
