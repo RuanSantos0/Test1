@@ -10,7 +10,14 @@
         <input placeholder="Data de Nascimento" type="text" ng-model=data.dataNascimento>
       </label>
       <div class="spacer" style="height: 9px;"></div>
+
       <label class="item item-select" id="adicionarPet-select1">
+        <span class="input-label">Dono</span>
+        <select ng-model="data.dono_id" data-ng-options="dono.id as dono.Nome for dono in donos">
+        </select>
+
+      </label>
+        <label  class="item item-select" id="adicionarPet-select2">
         <span class="input-label">Raça</span>
         <select ng-model="data.raca_id" data-ng-options="raca.id as raca.Nome for raca in racas">
         </select>
@@ -25,6 +32,6 @@
         -->
       </label>
     </form>
-    <button id="adicionarPet-button16" class="button button-balanced  button-block" ng-click="submit()"  ng-disabled="submitting">Salvar</button>
+    <button id="adicionarPet-button16" class="button button-balanced  button-block" ng-click="submit()"  ng-disabled="!data.nomePet || !data.dataNascimento">Salvar</button>
   </ion-content>
 </ion-view>

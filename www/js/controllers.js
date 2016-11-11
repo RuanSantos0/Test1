@@ -50,20 +50,20 @@ function ($scope, $stateParams, DonoService, DonoServiceLocal, $ionicPopup) {
 
 }])
 
-.controller('AdicionarPetCtrl', ['$scope', '$stateParams', 'PetServiceLocal', 'RacaServiceLocal','$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('AdicionarPetCtrl', ['$scope', '$stateParams', 'PetServiceLocal', 'RacaServiceLocal','DonoServiceLocal','$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 //O controller é único por Classe. Se existe uma classe Pet, o seu controller deve ser o PetController
 //Você vai trazer os metodos de consulta de dados pra cá!
 // to achando o codigo estranho desse controller, de onde tu tirou ?
-function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal,  $ionicPopup ) {
+function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal, DonoServiceLocal,  $ionicPopup ) {
 
 
     $scope.data = {
            nomePet: '',
            dataNascimento: '',
-           raca_id: ''
-
+           raca_id: '',
+           dono_id: ''
        }
 
     $scope.submitting = false;
@@ -76,10 +76,10 @@ function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal,  $ionicPopup 
             $scope.data = {
                  nomePet: '',
                  dataNascimento: '',
-                 raca_id: ''
-
+                 raca_id: '',
+                dono_id: ''
                }
-
+                   console.log($scope.donos);
            // PetService.add($scope.data).then(function(){
            //     $scope.data = {
            //       nomePet: '',
@@ -96,15 +96,21 @@ function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal,  $ionicPopup 
 
            //})
     }
-
     $scope.racas = [];
-
     $scope.lerRacas = function(){
-
-        $scope.racas = RacaServiceLocal.getRacas();
+      $scope.racas = RacaServiceLocal.getRacas();
     }
-
     $scope.lerRacas();
+
+//Criei essa parte-->
+    $scope.donos = [];
+    $scope.lerDono = function(){
+      $scope.donos = DonoServiceLocal.getDono();
+    }
+    $scope.lerDono();
+
+
+//termina aqui
 
 }])
 
@@ -125,7 +131,6 @@ function ($scope, $stateParams, PetServiceLocal) {
          //    $scope.pets = res;
          //  })
     }
-
     $scope.loadData();
 
 
@@ -165,22 +170,15 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal, $ionicPopup) {
         $scope.EditPet = PetServiceLocal.getPet($stateParams.id);
 
     };
-
     $scope.lerPet();
 
     $scope.lerRacas = function(){
-
-
         $scope.racas = RacaServiceLocal.getRacas();
     }
-
     $scope.lerRacas();
-
 // atualizar os dados do pet
     $scope.atualizando = false;
-
     $scope.atualizar = function(){
-
            $scope.atualizando = true;
            PetServiceLocal.update($scope.EditPet);
            $scope.atualizando = false;
@@ -189,10 +187,8 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal, $ionicPopup) {
                    title: 'Edite o Pet',
                    template: 'Pet Atualizado com Sucesso!'
             });
-
-
     }
-
+    
 }])
 
 
@@ -236,15 +232,12 @@ function ($scope, $stateParams,visualizarPetsVisitaLocal) {
 
 
   $scope.loadData = function(){
-
       $scope.pets = visualizarPetsVisitaLocal.getPets();
-
 
        // PetService.all().then(function(res){
        //    $scope.pets = res;
        //  })
   }
-
   $scope.loadData();
 
 }])

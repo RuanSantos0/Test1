@@ -24,6 +24,6 @@
                 <input placeholder="Telefone" type="tel" ng-model=data.telefone>
             </label>
         </form>
-        <button id="adicinarDono-button13" class="button button-balanced  button-block" ng-click="submit()"  ng-disabled="submitting">Salvar Dono</button>
+        <button id="adicinarDono-button13" class="button button-balanced  button-block" ng-click="submit()" ng-disabled="!data.nome  || !data.telefone || !data.sobrenome || !data.endereco || !data.cidade">Salvar Dono</button>
     </ion-content>
 </ion-view>
