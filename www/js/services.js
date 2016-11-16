@@ -135,6 +135,89 @@ angular.module('app.services', [])
 
 }])
 
+
+.service('AdicionarVisitaLocal',['$q',function($q){
+
+  //Lista de Pets que é carregada ao iniciar a aplicação
+   visitaList = [
+              { id: 1, idPet: 1, dataVisita: '01/01/2001', descricao:'Bom'},
+              { id: 2, idPet: 2, dataVisita: '02/02/2002', descricap:'Mal'},
+              { id: 3, idPet: 3, dataVisita: '03/03/2003', decricao:'Normal'},
+              { id: 4, idPet: 4, dataVisita: '04/04/2004', descricao:'Bom'},
+              { id: 5, idPet: 5, dataVisita: '05/05/2005', descricao:'Mal'}
+   ];
+
+   //retorna o ultimo id cadastrado
+   function getLastID () {
+        var temp = visitaList;
+
+        temp.sort(function (a, b) {
+          if (a.id > b.id) {
+            return 1;
+          }
+          if (a.id < b.id) {
+            return -1;
+          }
+
+        });
+
+        return temp[temp.length -1].id
+   }
+
+   return {
+
+        //adiciona uma Visita
+        addVisita: function (visita) {
+          //verifica qual é o ultimo ID e incrementa
+          var newID = getLastID() +1;
+          visita.id = newID;
+          //salva o pet na PetList
+          visitaList.push(visita);
+
+        },
+
+        //Retorna a lista de Pets
+        getVisitas: function() {
+            return visitaList;
+        },
+
+        //Retorna somente um Pet
+        getVisita: function (id) {
+
+            for (var i = 0; i < visitaList.length; i++) {
+                if (visitaList[i].id == id) {
+                return(visitaList[i]);
+                }
+            }
+            return '{}';
+        },
+
+        //Atualiza um pet
+        update: function(visita){
+          for(var i=0; i<visitaList.length; i++){
+            if(visitaList[i].id == visita.id){
+                visitaList[i] = visita;
+
+            }
+          }
+        },
+/**
+        //Para Deletar
+        delete: function(pet){
+          for(var i=0; i<petsList.length; i++) {
+            if(petsList[i].id == pet.id){
+            petList[i] = pet;
+            }
+          }
+
+        }**/
+
+  };
+
+
+}])
+
+
 .service('visualizarPetsVisitaLocal',['$q',function($q){
 
   petsList = [

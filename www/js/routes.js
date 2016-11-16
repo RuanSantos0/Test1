@@ -39,9 +39,9 @@ angular.module('app.routes', [])
     templateUrl: 'templates/editeOPet.html',
     controller: 'EditeOPetCtrl'
   })
-
+  
   .state('adicionarVisita', {
-    url: '/adicionarVisita',
+    url: '/adicionarVisita/:id/',
     templateUrl: 'templates/adicionarVisita.html',
     controller: 'adicionarVisitaCtrl'
   })
