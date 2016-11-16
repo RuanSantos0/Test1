@@ -228,16 +228,16 @@ angular.module('app.services', [])
 
   //Lista de Pets que é carregada ao iniciar a aplicação
    petsList = [
-              { id: 1, nomePet: 'Peter', dataNascimento: '01/01/2001', raca_id:1, dono_id: 1},
-              { id: 2, nomePet: 'Lois', dataNascimento: '02/02/2002', raca_id:2, dono_id: 2},
-              { id: 3, nomePet: 'Meg', dataNascimento: '03/03/2003', raca_id:3, dono_id: 3 },
-              { id: 4, nomePet: 'Chris', dataNascimento: '04/04/2004', raca_id:4, dono_id: 4},
-              { id: 5, nomePet: 'Stewie', dataNascimento: '05/05/2005', raca_id:5, dono_id: 5}
+              { id: 1, nomePet: 'Peter',  dataNascimento: '01/01/2001', raca_id:1, dono_id:1},
+              { id: 2, nomePet: 'Lois',   dataNascimento: '02/02/2002', raca_id:2, dono_id:2},
+              { id: 3, nomePet: 'Meg',    dataNascimento: '03/03/2003', raca_id:3, dono_id:3},
+              { id: 4, nomePet: 'Chris',  dataNascimento: '04/04/2004', raca_id:4, dono_id:4},
+              { id: 5, nomePet: 'Stewie', dataNascimento: '05/05/2005', raca_id:5, dono_id:5}
    ];
 
    //retorna o ultimo id cadastrado
-   function getLastID () {
-        var temp = petsList;
+      function getLastID () {
+      var temp = petsList;
 
         temp.sort(function (a, b) {
           if (a.id > b.id) {
@@ -261,7 +261,6 @@ angular.module('app.services', [])
           pet.id = newID;
           //salva o pet na PetList
           petsList.push(pet);
-
         },
 
         //Retorna a lista de Pets

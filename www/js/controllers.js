@@ -72,7 +72,7 @@ function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal, DonoServiceLo
            $scope.submitting = true;
 
            PetServiceLocal.addPet($scope.data);
-           console.log($scope.data);
+
             $scope.data = {
                  nomePet: '',
                  dataNascimento: '',
@@ -105,9 +105,11 @@ function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal, DonoServiceLo
 //Criei essa parte-->
     $scope.donos = [];
     $scope.lerDono = function(){
-      $scope.donos = DonoServiceLocal.getDono();
+      $scope.donos = DonoServiceLocal.getDonos();
     }
+
     $scope.lerDono();
+    
 //termina aqui
 
 }])
@@ -121,15 +123,13 @@ function ($scope, $stateParams, PetServiceLocal) {
 
 
     $scope.loadData = function(){
-
-        $scope.pets = PetServiceLocal.getPets();
-
+      $scope.pets = PetServiceLocal.getPets();
 
          // PetService.all().then(function(res){
          //    $scope.pets = res;
          //  })
     }
-    $scope.loadData();
+      $scope.loadData();
 
 
        // $scope.racas = [];
@@ -164,21 +164,27 @@ function ($scope, $stateParams, PetServiceLocal) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal,DonoServiceLocal, $ionicPopup) {
 
+  $scope.listaDono = function(){
+      $scope.EditDono = DonoServiceLocal.getDono($stateParams.id);
+  };
+  $scope.listaDono();
+
+
     $scope.lerPet = function(){
         $scope.EditPet = PetServiceLocal.getPet($stateParams.id);
 
     };
-    $scope.lerPet();
 
+    $scope.lerPet();
     $scope.lerRacas = function(){
         $scope.racas = RacaServiceLocal.getRacas();
     }
     $scope.lerRacas();
 
-    //Criei essa parte-->
+//Criei essa parte-->
         $scope.donos = [];
         $scope.lerDono = function(){
-          $scope.donos = DonoServiceLocal.getDono();
+          $scope.donos = DonoServiceLocal.getDonos();
         }
         $scope.lerDono();
     //termina aqui
@@ -196,11 +202,11 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal,DonoServiceLocal
             });
     }
       //tentativa do EXCLUIR
-    $scope.atualizando = false;
+    $scope.excluindo = false;
     $scope.excluir = function(){
-       $scope.atualizando = true;
+       $scope.excluindo = true;
        PetServiceLocal.delete($scope.EditPet);
-       $scope.atualizando = false;
+       $scope.excluindo = false;
 
       $ionicPopup.alert({
               title: 'Excluido',
@@ -226,7 +232,7 @@ function ($scope, $stateParams, VisitaService, $ionicPopup) {
 
      $scope.submit = function(){
          $scope.submitting = true;
-         VisitaService.add($scope.data).then(function(){
+         visualizarPetsVisitaLocal.add($scope.data).then(function(){
              $scope.data = {
                dataVisita: '',
                descricao:''
