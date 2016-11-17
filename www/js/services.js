@@ -377,7 +377,7 @@ angular.module('app.services', [])
         delete: function(pet){
           for(var i=0; i<petsList.length; i++) {
             if(petsList[i].id == pet.id){
-            petsList[i] = pet;
+            var excluir = petsList.splice(i,1);
             }
           }
 
