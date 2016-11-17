@@ -6,7 +6,7 @@
         <td></td>
     </tr>
     <tr ng-repeat="pet in pets">
-        <td><input type="checkbox"  ng-model="editeOPet.pet.id" /> {{pet.nomePet}}</td>
+        <td ng-model="editeOPet.pet.id"> {{pet.nomePet}} </td>
         <td>
           <h2><a class="btn btn-primary icon ion-edit " ui-sref="editeOPet({id:pet.id})"> </a> </h2><!--BUTÃO ALTERAR-->
         </td>
@@ -15,7 +15,7 @@
         </td>
     </tr>
 </table>
-<button id="editeOPet-button99" class="button button-balanced  button-block" ng-click="editeOPet.excluir()" ng-disabled="excluindo">Excluir</button>
+<!--<button id="editeOPet-button99" class="button button-balanced  button-block" ng-click="editeOPet.excluir()" ng-disabled="excluindo">Excluir</button>-->
 
 
     <!-- <ion-list id="alterarPet-list1" >

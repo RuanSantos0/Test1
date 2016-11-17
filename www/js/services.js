@@ -212,7 +212,8 @@ angular.module('app.services', [])
               { id: 2, Nome: 'Shih-tzu'},
               { id: 3, Nome: 'Pastor-Belga'},
               { id: 4, Nome: 'Buldogue'},
-              { id: 5, Nome: 'Pit Bull'}
+              { id: 5, Nome: 'Pit Bull'},
+              { id: 6,  Nome: 'Pinscher'}
     ];
 
     return {
@@ -228,7 +229,7 @@ angular.module('app.services', [])
 
   //Lista de Pets que é carregada ao iniciar a aplicação
    petsList = [
-              { id: 1, nomePet: 'Peter',  dataNascimento: '01/01/2001', raca_id:1, dono_id:1},
+              { id: 1, nomePet: 'Luppy',  dataNascimento: '04/08/1998', raca_id:1, dono_id:1},
               { id: 2, nomePet: 'Lois',   dataNascimento: '02/02/2002', raca_id:2, dono_id:2},
               { id: 3, nomePet: 'Meg',    dataNascimento: '03/03/2003', raca_id:3, dono_id:3},
               { id: 4, nomePet: 'Chris',  dataNascimento: '04/04/2004', raca_id:4, dono_id:4},
@@ -293,7 +294,7 @@ angular.module('app.services', [])
         delete: function(pet){
           for(var i=0; i<petsList.length; i++) {
             if(petsList[i].id == pet.id){
-            petList[i] = pet;
+            petsList[i] = pet;
             }
           }
 

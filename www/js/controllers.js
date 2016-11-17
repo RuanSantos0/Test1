@@ -109,7 +109,7 @@ function ($scope, $stateParams, PetServiceLocal, RacaServiceLocal, DonoServiceLo
     }
 
     $scope.lerDono();
-    
+
 //termina aqui
 
 }])
@@ -164,12 +164,6 @@ function ($scope, $stateParams, PetServiceLocal) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal,DonoServiceLocal, $ionicPopup) {
 
-  $scope.listaDono = function(){
-      $scope.EditDono = DonoServiceLocal.getDono($stateParams.id);
-  };
-  $scope.listaDono();
-
-
     $scope.lerPet = function(){
         $scope.EditPet = PetServiceLocal.getPet($stateParams.id);
 
@@ -195,7 +189,7 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal,DonoServiceLocal
            $scope.atualizando = true;
            PetServiceLocal.update($scope.EditPet);
            $scope.atualizando = false;
-
+              
            $ionicPopup.alert({
                    title: 'Edite o Pet',
                    template: 'Pet Atualizado com Sucesso!'

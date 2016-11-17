@@ -13,7 +13,7 @@
       <div class="spacer" style="height: 9px;"></div>
       <label class="item item-select" id="adicionarPet-select1">
         <span class="input-label">Dono</span>
-        <select ng-model="EditDono.dono_id" data-ng-options="dono.id as dono.nome for dono in donos">
+        <select ng-model="EditPet.dono_id" data-ng-options="dono.id as dono.nome for dono in donos">
         </select>
       </label>
 
@@ -25,6 +25,6 @@
     </form>
     <div class="spacer" style="height: 9px;"></div>
     <button id="editeOPet-button15" class="button button-balanced  button-block" ng-click="atualizar()" ng-disabled="atualizando">Salvar</button>
-    <button id="editeOPet-button16" class="button button-balanced  button-block" ng-click="excluir()" ng-disabled="excluindo">Excluir</button>
+    <button id="editeOPet-button16" class="button button-balanced  button-block" ng-click="excluir(EditPet.nomePet)" ng-disabled="excluindo">Excluir</button>
     </ion-content>
 </ion-view>
