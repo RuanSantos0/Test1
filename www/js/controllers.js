@@ -211,36 +211,108 @@ function ($scope, $stateParams,PetServiceLocal,RacaServiceLocal,DonoServiceLocal
 }])
 
 
-.controller('adicionarVisitaCtrl', ['$scope', '$stateParams', 'VisitaService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('adicionarVisitaCtrl', ['$scope', '$stateParams', 'AdicionarVisitaLocal','visualizarPetsVisitaLocal', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, VisitaService, $ionicPopup) {
+function ($scope, $stateParams, AdicionarVisitaLocal ,visualizarPetsVisitaLocal, $ionicPopup) {
 
+      $scope.lerPet = function(){
+          $scope.VisualizarOPet = visualizarPetsVisitaLocal.getPet($stateParams.id);
 
-  $scope.data = {
-         dataVisita: '',
-         descricao:''
-     }
+      };
+      $scope.lerPet();
+  /**
+      $scope.lerRacas = function(){
+          $scope.racas = RacaServiceLocal.getRacas();
+      }
+      $scope.lerRacas();
 
-     $scope.submitting = false;
+      //Criei essa parte-->
+          $scope.donos = [];
+          $scope.lerDono = function(){
+            $scope.donos = DonoServiceLocal.getDono();
+          }
+          $scope.lerDono();
+      //termina aqui
+  **/
+  // atualizar os dados do pet
+      $scope.atualizando = false;
+      $scope.atualizar = function(){
+             $scope.atualizando = true;
+             visualizarPetsVisitaLocal.update($scope.VisualizarOPet);
+             $scope.atualizando = false;
 
-     $scope.submit = function(){
-         $scope.submitting = true;
-         visualizarPetsVisitaLocal.add($scope.data).then(function(){
-             $scope.data = {
+          /**   $ionicPopup.alert({
+                     title: 'Edite o Pet',
+                     template: 'Pet Atualizado com Sucesso!'
+              }); **/
+      }
+        //tentativa do EXCLUIR
+      $scope.atualizando = false;
+      /**$scope.excluir = function(){
+         $scope.atualizando = true;
+         PetServiceLocal.delete($scope.EditPet);
+         $scope.atualizando = false;
+
+        $ionicPopup.alert({
+                title: 'Excluido',
+                template: 'Pet Deletado com Sucesso!'
+         });
+      }**/
+
+        $scope.data = {
+               idPet: '',
                dataVisita: '',
                descricao:''
-             }
-             $scope.submitting = false;
 
-             $ionicPopup.alert({
-                 title: 'Thank you!',
-                 template: 'Your response has been recorded.'
-             });
+           }
 
-         })
-     }
-}])
+        $scope.submitting = false;
+
+        $scope.submit = function(){
+               $scope.submitting = true;
+
+               AdicionarVisitaLocal.addVisita($scope.data);
+               console.log($scope.data);
+                $scope.data = {
+                     idPet: '',
+                     dataVisita: '',
+                     descricao:'',
+                   }
+
+               // PetService.add($scope.data).then(function(){
+               //     $scope.data = {
+               //       nomePet: '',
+               //       dataNascimento: '',
+               //       raca: ''
+
+               //     }
+                   $scope.submitting = false;
+
+                   $ionicPopup.alert({
+                       title: 'Thank you!',
+                       template: 'Your response has been recorded.'
+                   });
+
+               //})
+        }
+      /**  $scope.racas = [];
+        $scope.lerRacas = function(){
+          $scope.racas = RacaServiceLocal.getRacas();
+        }
+        $scope.lerRacas();
+
+    //Criei essa parte-->
+        $scope.donos = [];
+        $scope.lerDono = function(){
+          $scope.donos = DonoServiceLocal.getDono();
+        }
+        $scope.lerDono();
+    //termina aqui
+**/
+
+  }])
+
 
 .controller('visualizarPetsVisita', ['$scope', '$stateParams', 'visualizarPetsVisitaLocal', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
