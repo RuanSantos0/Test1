@@ -39,18 +39,14 @@ angular.module('app.routes', [])
     templateUrl: 'templates/editeOPet.html',
     controller: 'EditeOPetCtrl'
   })
-  
+
   .state('adicionarVisita', {
     url: '/adicionarVisita/:id/',
     templateUrl: 'templates/adicionarVisita.html',
     controller: 'adicionarVisitaCtrl'
   })
 
-  .state('visualizarPetsVisita', {
-    url:'/visualizarPetsVisita',
-    templateUrl: 'templates/visualizarPetsVisita.html',
-    controller: 'visualizarPetsVisita'
-  })
+
 
 $urlRouterProvider.otherwise('/petclinc')
 

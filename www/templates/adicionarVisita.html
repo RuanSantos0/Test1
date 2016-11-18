@@ -2,8 +2,12 @@
   <ion-content padding="true" class="has-header">
     <div class="spacer" style="height: 90px;"></div>
     <form id="adicionarVisita-form11" class="list">
-      <label class="item item-input" id="adicionarVisita-input18">
-        <input placeholder={{VisualizarOPet.nomePet}} type="text" ng-model=VisualizarOPet.nomePet>
+
+      <div class="spacer" style="height: 9px;"></div>
+      <label class="item item-select" id="AdicionarVisitaLocal-select1">
+        <span class="input-label">Pet</span>
+        <select ng-model="data.idPet" data-ng-options="pet.id as pet.nomePet for pet in pets">
+        </select>
       </label>
       <div class="spacer" style="height: 9px;"></div>
       <label class="item item-input" id="adicionarVisita-input18">
