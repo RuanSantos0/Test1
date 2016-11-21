@@ -122,10 +122,10 @@ console.log($scope.data);
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, AdicionarVisitaLocal ,PetServiceLocal, $ionicPopup) {
-
+        var data = Date(2016,11,21);
 
         $scope.data = {
-               dataVisita: '',
+               dataVisita: data,
                descricao:'',
                idPet: ''
            }
@@ -135,6 +135,7 @@ function ($scope, $stateParams, AdicionarVisitaLocal ,PetServiceLocal, $ionicPop
         $scope.submit = function(){
                $scope.submitting = true;
 
+               var d = new Date( );
                AdicionarVisitaLocal.addVisita($scope.data);
                console.log($scope.data);
                 $scope.data = {
@@ -304,3 +305,26 @@ function ($scope, $stateParams,PetServiceLocal) {
   $scope.loadData();
 
 }])**/
+
+function mascaraData(campoData){
+            var data = campoData.value;
+            if (data.length == 2){
+                data = data + '/';
+                document.forms[0].data.value = data;
+    return true;
+            }
+            if (data.length == 5){
+                data = data + '/';
+                document.forms[0].data.value = data;
+                return true;
+            }
+       }
+
+function somenteNumeros(num) {
+        var er = /[^0-9.^/]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+}
+}
